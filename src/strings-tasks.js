@@ -134,8 +134,11 @@ function removeTrailingWhitespaces(value) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  if (str === false || times <= 0) {
+    return '';
+  }
+  return str.repeat(times);
 }
 
 /**
@@ -150,10 +153,13 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  if (str.indexOf(value) === -1) {
+    return str;
+  }
+  return str.replace(value, '');
 }
-
+// console.log(removeFirstOccurrences());
 /**
  * Remove the last occurrence of a substring from a string.
  *
@@ -166,9 +172,21 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const resolt = '';
+  const lastIndex = str.lastIndexOf(value);
+  if (lastIndex === -1) {
+    return str;
+  }
+  const resolt1 = str.slice(0, lastIndex);
+  const resolt2 = str.slice(lastIndex + value.length);
+  // const resolt3= str.slice(lastIndex - 1);
+  // return console.log(resolt2);
+  return resolt.concat(resolt1, resolt2);
+  // const resolt3= str.lastIndex - 1;
 }
+// console.log(removeLastOccurrences('Hello, World!', ''));
+// removeLastOccurrences('ABABAB', 'BA');
 
 /**
  * Calculate the sum of character codes of the given string.
@@ -182,10 +200,17 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  // throw new Error('Not implemented');
+  if (str === false || str === null || str === undefined) {
+    return 0;
+  }
+  let sum = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    sum += str.codePointAt(i);
+  }
+  return sum;
 }
-
 /**
  * Checks if a string starts with a specific substring.
  *
@@ -197,8 +222,8 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  return str.startsWith(substr);
 }
 
 /**
@@ -212,8 +237,8 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  return str.endsWith(substr);
 }
 
 /**
@@ -229,10 +254,13 @@ function endsWith(/* str, substr */) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  const str = '';
+  if (minutes < 10 && seconds < 10) {
+    return str.concat('0', minutes, ':', '0', seconds);
+  }
+  return str.concat('0', minutes, ':', seconds);
 }
-
 /**
  * Returns a string in reverse order.
  *
@@ -243,8 +271,8 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 /**
