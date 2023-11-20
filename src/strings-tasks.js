@@ -40,8 +40,8 @@ function getStringLength(value) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
 
 /**
@@ -380,8 +380,10 @@ function findLongestWord(sentence) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  let wordArr = str.split(' ');
+  wordArr = wordArr.map((word) => word.split('').reverse().join(''));
+  return wordArr.join(' ');
 }
 // console.log(reverseWords('Hello World'));
 
@@ -396,8 +398,13 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  let newStr = '';
+  newStr = str
+    .split('')
+    .map((l) => (l === l.toUpperCase() ? l.toLowerCase() : l.toUpperCase()))
+    .join('');
+  return newStr;
 }
 
 /**
@@ -428,9 +435,10 @@ function getStringFromTemplate(firstName, lastName) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  return value.slice(7, -1);
 }
+// console.log(extractNameFromTemplate('Hello, John Doe!'));
 
 /**
  * Remove the first and last angle brackets from tag string
