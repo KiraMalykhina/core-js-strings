@@ -207,10 +207,11 @@ function sumOfCodes(str) {
   }
   let sum = 0;
   for (let i = 0; i < str.length; i += 1) {
-    sum += str.codePointAt(i);
+    sum += str.charCodeAt(i);
   }
   return sum;
 }
+// console.log(sumOfCodes('12345'));
 /**
  * Checks if a string starts with a specific substring.
  *
@@ -261,6 +262,7 @@ function formatTime(minutes, seconds) {
   }
   return str.concat('0', minutes, ':', seconds);
 }
+
 /**
  * Returns a string in reverse order.
  *
@@ -490,8 +492,10 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const one = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const two = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+  return str.replace(/[a-z]/gi, (res) => two[one.indexOf(res)]);
 }
 
 /**
@@ -518,8 +522,68 @@ function encodeToRot13(/* str */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const arr = [
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
+  ];
+  let resolt = '';
+  arr.forEach((item, index) => {
+    if (item === value) {
+      resolt = index;
+    }
+  });
+  return resolt;
 }
 
 module.exports = {
